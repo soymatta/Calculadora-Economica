@@ -2,13 +2,17 @@
   "name": "calculadora-economica",
   "private": true,
   "version": "0.0.0",
+  "description": "Una aplicación de calculadora económica.",
+  "author": {
+    "name": "Yassed Mata",
+    "email": "yassed883@gmail.com"
+  },
   "type": "module",
+  "main": "main.cjs",
   "scripts": {
-  	"buildw": "webpack",
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "electron:build": "pnpm run build && electron-builder"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -20,6 +24,10 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
@@ -31,5 +39,21 @@
     "vite": "^5.4.10",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4"
+  },
+  "build": {
+    "appId": "com.calculadora.id",
+    "productName": "Calculadora Económica",
+    "files": [
+      "dist/**/*",
+      "main.cjs",
+      "preload.js"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    }
   }
 }
